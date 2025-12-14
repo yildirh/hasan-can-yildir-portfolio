@@ -5,6 +5,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@500;600&family=JetBrains+Mono:wght@400;500&display=swap');
 
 :root {
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  --error: #ef4444;
+  --success: #22c55e;
+}
+
+/* Dark Theme (default) */
+:root, [data-theme="dark"] {
   --bg: #0a0a0b;
   --bg-card: #111113;
   --bg-card-hover: #18181b;
@@ -16,12 +25,21 @@
   --border: #27272a;
   --border-light: #3f3f46;
   --accent: #3f3f46;
-  --error: #ef4444;
-  --success: #22c55e;
-  
-  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-serif: 'Playfair Display', Georgia, serif;
-  --font-mono: 'JetBrains Mono', monospace;
+}
+
+/* Light Theme */
+[data-theme="light"] {
+  --bg: #fafafa;
+  --bg-card: #ffffff;
+  --bg-card-hover: #f4f4f5;
+  --bg-console: #f4f4f5;
+  --text: #18181b;
+  --text-light: #18181b;
+  --text-secondary: #52525b;
+  --text-muted: #71717a;
+  --border: #e4e4e7;
+  --border-light: #d4d4d8;
+  --accent: #a1a1aa;
 }
 
 * {
@@ -165,6 +183,37 @@ a {
   color: var(--bg);
 }
 
+.header-controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.theme-toggle {
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: var(--text);
+}
+
+.theme-toggle svg {
+  width: 18px;
+  height: 18px;
+}
+
+.theme-toggle:hover {
+  background: var(--text);
+  color: var(--bg);
+  transform: rotate(15deg);
+}
+
 /* Hero */
 .hero {
   margin-bottom: 56px;
@@ -298,19 +347,23 @@ a {
 .pipeline {
   margin-top: 8px;
   overflow: hidden;
+  position: relative;
+  padding-top: 18px;
 }
 
 .pipeline-track {
-  position: relative;
+  position: absolute;
+  top: 37px;
+  left: 19px;
+  right: 19px;
   height: 3px;
-  margin: 0 50px;
-  margin-bottom: 20px;
+  z-index: 0;
 }
 
 .track-bg {
   position: absolute;
   inset: 0;
-  background: #27272a;
+  background: var(--border);
   border-radius: 2px;
 }
 
@@ -319,7 +372,7 @@ a {
   top: 0;
   left: 0;
   height: 100%;
-  background: #52525b;
+  background: var(--text-muted);
   border-radius: 2px;
   transition: width 0.5s ease;
 }
@@ -342,6 +395,8 @@ a {
 .pipeline-nodes {
   display: flex;
   justify-content: space-between;
+  position: relative;
+  z-index: 1;
 }
 
 .pipeline-node {
@@ -362,7 +417,7 @@ a {
   height: 38px;
   border-radius: 50%;
   background: var(--bg-card);
-  border: 2px solid #27272a;
+  border: 2px solid var(--border);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -372,7 +427,7 @@ a {
 .node-num {
   font-size: 12px;
   font-weight: 600;
-  color: #52525b;
+  color: var(--text-muted);
   font-family: var(--font-mono);
 }
 
@@ -399,9 +454,9 @@ a {
 }
 
 .pipeline-node.done .node-circle {
-  background: #3f3f46;
-  border-color: #3f3f46;
-  color: var(--text-light);
+  background: var(--text-muted);
+  border-color: var(--text-muted);
+  color: var(--bg);
 }
 
 .pipeline-node.done .node-label {
@@ -409,7 +464,7 @@ a {
 }
 
 .pipeline-node.active .node-circle {
-  border-color: #52525b;
+  border-color: var(--text-muted);
 }
 
 .pipeline-node.active .node-label {
@@ -449,8 +504,8 @@ a {
 .node-spinner {
   width: 12px;
   height: 12px;
-  border: 2px solid #27272a;
-  border-top-color: #71717a;
+  border: 2px solid var(--border);
+  border-top-color: var(--text-muted);
   border-radius: 50%;
   animation: spin 0.7s linear infinite;
 }
@@ -464,19 +519,17 @@ a {
   margin-top: 20px;
   background: var(--bg-console);
   border-radius: 10px;
-  padding: 0;
-  max-height: 0;
-  overflow: hidden;
+  padding: 14px 18px;
+  min-height: 60px;
   opacity: 0;
-  transition: all 0.4s ease;
-  border: 1px solid transparent;
+  transition: opacity 0.3s ease;
+  border: 1px solid var(--border);
+  visibility: hidden;
 }
 
 .pipeline-console.visible {
-  padding: 14px 18px;
-  max-height: 100px;
   opacity: 1;
-  border-color: var(--border);
+  visibility: visible;
 }
 
 .console-line {
@@ -884,12 +937,14 @@ a {
     height: 32px;
   }
   
-  .node-label {
-    font-size: 9px;
+  .pipeline {
+    padding-top: 16px;
   }
   
   .pipeline-track {
-    margin: 0 24px;
+    left: 16px;
+    right: 16px;
+    top: 32px;
   }
   
   .pipeline-nodes {
@@ -917,7 +972,9 @@ a {
 
 @media (max-width: 480px) {
   .pipeline-track {
-    margin: 0 12px;
+    left: 13px;
+    right: 13px;
+    top: 29px;
   }
   
   .node-circle {
@@ -931,6 +988,7 @@ a {
   
   .pipeline-console {
     padding: 10px 12px;
+    min-height: 50px;
   }
   
   .console-main {
