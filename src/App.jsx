@@ -11,7 +11,13 @@ function AppContent() {
   const [expandedExp, setExpandedExp] = useState(0) // Kolay default open
   const { language, toggleLanguage } = useLanguage()
 
-  const steps = ['Build', 'Smoke Test', 'Regression Test', 'Deploy', 'Monitor']
+  const steps = [
+    { full: 'Build', short: 'Build' },
+    { full: 'Smoke Test', short: 'Smoke' },
+    { full: 'Regression Test', short: 'Regr.' },
+    { full: 'Deploy', short: 'Deploy' },
+    { full: 'Monitor', short: 'Monitor' }
+  ]
 
   useEffect(() => {
     const timer = setTimeout(() => setIsLoading(false), 1000)
@@ -285,7 +291,7 @@ function AppContent() {
             <div className="pipeline-nodes">
               {steps.map((s, index) => (
                 <div 
-                  key={s}
+                  key={s.full}
                   className={`pipeline-node 
                     ${index < step ? 'done' : ''} 
                     ${index === step ? 'active' : ''} 
@@ -309,7 +315,10 @@ function AppContent() {
                       <span className="node-num">{index + 1}</span>
                     )}
                   </div>
-                  <span className="node-label">{s}</span>
+                  <span className="node-label">
+                    <span className="label-full">{s.full}</span>
+                    <span className="label-short">{s.short}</span>
+                  </span>
                 </div>
               ))}
             </div>

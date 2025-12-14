@@ -297,6 +297,7 @@ a {
    ============================================= */
 .pipeline {
   margin-top: 8px;
+  overflow: hidden;
 }
 
 .pipeline-track {
@@ -387,6 +388,14 @@ a {
   text-transform: uppercase;
   letter-spacing: 0.08em;
   transition: color 0.3s ease;
+}
+
+.label-full {
+  display: inline;
+}
+
+.label-short {
+  display: none;
 }
 
 .pipeline-node.done .node-circle {
@@ -882,9 +891,56 @@ a {
   .pipeline-track {
     margin: 0 24px;
   }
+  
+  .pipeline-nodes {
+    gap: 4px;
+  }
+  
+  .pipeline-node {
+    min-width: 0;
+    flex: 1;
+  }
+  
+  .node-label {
+    font-size: 9px;
+    text-align: center;
+  }
+  
+  .label-full {
+    display: none;
+  }
+  
+  .label-short {
+    display: inline;
+  }
 }
 
 @media (max-width: 480px) {
+  .pipeline-track {
+    margin: 0 12px;
+  }
+  
+  .node-circle {
+    width: 26px;
+    height: 26px;
+  }
+  
+  .node-label {
+    font-size: 8px;
+  }
+  
+  .pipeline-console {
+    padding: 10px 12px;
+  }
+  
+  .console-main {
+    font-size: 12px;
+  }
+  
+  .console-sub {
+    font-size: 10px;
+  }
+  
   .header {
     margin-bottom: 48px;
   }
