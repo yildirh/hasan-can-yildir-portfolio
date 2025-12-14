@@ -131,7 +131,7 @@ function AppContent() {
       highlights: [
         { title: 'Test Strategy', desc: language === 'en' ? 'Defined end-to-end quality roadmap and automation strategy' : 'Uçtan uca kalite yol haritası ve otomasyon stratejisi belirleme' },
         { title: 'Cypress E2E', desc: language === 'en' ? 'Personally built and maintained E2E test suites' : 'E2E test suite\'lerini bizzat kurma ve yönetme' },
-        { title: 'Team Leadership', desc: language === 'en' ? 'Led a team of 3 QA engineers, mentoring growth' : '3 kişilik QA ekibine liderlik ve mentorluk' },
+        { title: 'Team Leadership', desc: language === 'en' ? 'Led a team of QA engineers, mentoring growth' : 'QA ekibine liderlik ve mentorluk' },
         { title: 'CI/CD Pipeline', desc: language === 'en' ? 'Integrated Cypress tests into GitHub Actions' : 'Cypress testlerini GitHub Actions\'a entegre etme' },
         { title: 'Smoke & Regression', desc: language === 'en' ? 'Designed smoke and regression test frameworks' : 'Smoke ve regression test framework\'leri tasarlama' },
       ]
