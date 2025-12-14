@@ -6,7 +6,7 @@ Personal portfolio website showcasing my experience as a QA Engineering Lead wit
 
 ## 🚀 Live Demo
 
-[Coming soon - Deploy to Vercel/Netlify]
+🔗 **[hasan-can-yildir-portfolio.pages.dev](https://hasan-can-yildir-portfolio.pages.dev)**
 
 ## ✨ Features
 
@@ -53,34 +53,6 @@ npm run build
 npm run preview
 ```
 
-## 🌐 Deployment
-
-### Vercel (Recommended)
-
-1. Push your code to GitHub
-2. Import project on [Vercel](https://vercel.com)
-3. Deploy automatically
-
-### Netlify
-
-1. Push your code to GitHub
-2. Connect repository on [Netlify](https://netlify.com)
-3. Build command: `npm run build`
-4. Publish directory: `dist`
-
-### GitHub Pages
-
-```bash
-# Install gh-pages
-npm install --save-dev gh-pages
-
-# Add to package.json scripts:
-# "deploy": "npm run build && gh-pages -d dist"
-
-# Deploy
-npm run deploy
-```
-
 ## 📁 Project Structure
 
 ```
@@ -88,6 +60,13 @@ hasan-can-yildir-portfolio/
 ├── public/
 │   └── favicon.svg
 ├── src/
+│   ├── components/
+│   │   ├── Contact.jsx
+│   │   ├── Education.jsx
+│   │   ├── Experience.jsx
+│   │   ├── Hero.jsx
+│   │   ├── Navbar.jsx
+│   │   └── Skills.jsx
 │   ├── context/
 │   │   └── LanguageContext.jsx
 │   ├── App.jsx
@@ -132,5 +111,3 @@ MIT License - Feel free to use this template for your own portfolio.
 - Email: yldrhsncn@gmail.com
 
 ---
-
-Built with ❤️ using React + Vite
