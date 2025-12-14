@@ -31,8 +31,9 @@
 [data-theme="light"] {
   --bg: #fafafa;
   --bg-card: #ffffff;
-  --bg-card-hover: #f4f4f5;
+  --bg-card-hover: #e8e8eb;
   --bg-console: #f4f4f5;
+  --bg-dark-card: #1a1a1d;
   --text: #18181b;
   --text-light: #18181b;
   --text-secondary: #52525b;
@@ -40,6 +41,17 @@
   --border: #e4e4e7;
   --border-light: #d4d4d8;
   --accent: #a1a1aa;
+}
+
+/* Light mode - dark-card becomes light card */
+[data-theme="light"] .dark-card {
+  background: #ffffff;
+  border-color: #e4e4e7;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+[data-theme="light"] .dark-card:hover {
+  border-color: #d4d4d8;
 }
 
 * {
@@ -781,7 +793,7 @@ a {
 
 .highlight-item:hover {
   border-color: var(--border-light);
-  background: rgba(17, 17, 19, 0.8);
+  background: var(--bg-card-hover);
 }
 
 .highlight-title {
@@ -942,8 +954,8 @@ a {
   }
   
   .pipeline-track {
-    left: 16px;
-    right: 16px;
+    left: 20px;
+    right: 20px;
     top: 32px;
   }
   
@@ -972,8 +984,8 @@ a {
 
 @media (max-width: 480px) {
   .pipeline-track {
-    left: 13px;
-    right: 13px;
+    left: 18px;
+    right: 18px;
     top: 29px;
   }
   

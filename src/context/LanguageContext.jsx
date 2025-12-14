@@ -15,7 +15,7 @@ const translations = {
       greeting: "Hi, I'm",
       name: 'Hasan Can YILDIR',
       role: 'Software QA Team Lead',
-      description: 'With 9+ years of experience, I enhance software quality, manage automation processes, and lead teams to deliver excellence.',
+      description: 'Quality is not a phase—it\'s a mindset. I lead the design of end-to-end testing strategies that embed quality into every stage of the development lifecycle. With a strong hands-on background, I build scalable automation architectures, integrate continuous testing into CI/CD pipelines, and help teams adopt a sustainable, quality-first engineering culture.',
       cta: 'Get in Touch',
       ctaSecondary: 'View Experience',
       stats: {
@@ -116,7 +116,7 @@ const translations = {
       greeting: 'Merhaba, Ben',
       name: 'Hasan Can YILDIR',
       role: 'Software QA Team Lead',
-      description: '9+ yıllık deneyimle yazılım kalitesini artırıyor, otomasyon süreçlerini yönetiyor ve ekiplere liderlik ediyorum.',
+      description: 'Kalite bir aşama değil, bir zihniyettir. Kaliteyi geliştirme yaşam döngüsünün her aşamasına entegre eden uçtan uca test stratejileri tasarlıyorum. Güçlü bir uygulamalı geçmişle, ölçeklenebilir otomasyon mimarileri kuruyorum, sürekli testi CI/CD pipeline\'larına entegre ediyorum ve ekiplerin sürdürülebilir, kalite odaklı bir mühendislik kültürü benimsemesine yardımcı oluyorum.',
       cta: 'İletişime Geç',
       ctaSecondary: 'Deneyimlerimi Gör',
       stats: {
