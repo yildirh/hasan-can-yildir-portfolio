@@ -13,6 +13,10 @@ function AppContent() {
   const { language, toggleLanguage } = useLanguage()
   const { theme, toggleTheme } = useTheme()
 
+  // Dynamic experience calculation
+  const CAREER_START_YEAR = 2015
+  const experienceYears = new Date().getFullYear() - CAREER_START_YEAR
+
   const steps = [
     { full: 'Build', short: 'Build' },
     { full: 'Smoke Test', short: 'Smoke' },
@@ -195,18 +199,44 @@ function AppContent() {
   ]
 
   const technologies = [
-    { name: 'Cypress', level: null },
-    { name: 'Selenium', level: null },
-    { name: 'Playwright', level: null },
-    { name: 'TestCafe', level: null },
-    { name: 'JavaScript', level: null },
-    { name: 'Python', level: null },
-    { name: 'GitHub Actions', level: null },
-    { name: 'Jenkins', level: null },
-    { name: 'GitHub', level: null },
-    { name: 'Charles Proxy', level: null },
-    { name: 'Jira', level: null },
-    { name: 'Postman', level: null },
+    { name: 'Cypress', desc: language === 'en' ? 'Large-scale UI & API automation' : 'Büyük ölçekli UI ve API otomasyonu' },
+    { name: 'Selenium', desc: language === 'en' ? 'Cross-browser test automation' : 'Çapraz tarayıcı test otomasyonu' },
+    { name: 'Playwright', desc: language === 'en' ? 'Modern E2E testing framework' : 'Modern E2E test framework\'ü' },
+    { name: 'TestCafe', desc: language === 'en' ? 'Node.js-based automation' : 'Node.js tabanlı otomasyon' },
+    { name: 'GitHub Actions', desc: language === 'en' ? 'Nightly health checks & reporting' : 'Gece sağlık kontrolleri ve raporlama' },
+    { name: 'Jenkins', desc: language === 'en' ? 'Legacy pipeline support & orchestration' : 'Pipeline yönetimi ve orkestrasyon' },
+    { name: 'TestRail', desc: language === 'en' ? 'Test case management & reporting' : 'Test case yönetimi ve raporlama' },
+    { name: 'JavaScript', desc: language === 'en' ? 'Primary automation language' : 'Ana otomasyon dili' },
+    { name: 'Python', desc: language === 'en' ? 'Scripting & data validation' : 'Script ve veri doğrulama' },
+    { name: 'Postman', desc: language === 'en' ? 'API testing & contract validation' : 'API testi ve kontrat doğrulama' },
+    { name: 'Charles Proxy', desc: language === 'en' ? 'Network debugging & mocking' : 'Ağ hata ayıklama ve mocking' },
+  ]
+
+  const qualityPrinciples = [
+    {
+      title: language === 'en' ? 'Shift-Left Mindset' : 'Shift-Left Yaklaşımı',
+      desc: language === 'en' 
+        ? 'Quality starts at design. I collaborate with PMs, developers, and stakeholders during refinement to identify risks before implementation—reducing costly rework and late-stage defects.'
+        : 'Kalite tasarımda başlar. Refinement sürecinde PM, geliştirici ve paydaşlarla işbirliği yaparak riskleri uygulama öncesinde belirliyorum—maliyetli yeniden çalışma ve geç aşama hatalarını azaltıyorum.'
+    },
+    {
+      title: language === 'en' ? 'Automation as a Safety Net' : 'Güvenlik Ağı Olarak Otomasyon',
+      desc: language === 'en'
+        ? 'Automation is not just about speed; it\'s about trust. I design robust UI and API suites that act as a safety net for rapid releases, ensuring critical user journeys remain intact.'
+        : 'Otomasyon sadece hız için değil, güven içindir. Hızlı sürümler için güvenlik ağı görevi gören sağlam UI ve API suite\'leri tasarlıyorum, kritik kullanıcı yolculuklarının bozulmamasını sağlıyorum.'
+    },
+    {
+      title: language === 'en' ? 'Business-Driven Test Strategy' : 'İş Odaklı Test Stratejisi',
+      desc: language === 'en'
+        ? 'Every test has a purpose. I prioritize scenarios based on business impact, user risk, and system criticality—protecting data integrity and customer trust rather than chasing coverage metrics.'
+        : 'Her testin bir amacı var. Senaryoları iş etkisi, kullanıcı riski ve sistem kritikliğine göre önceliklendiriyorum—coverage metriklerini kovalamak yerine veri bütünlüğünü ve müşteri güvenini koruyorum.'
+    },
+    {
+      title: language === 'en' ? 'Preventing, Not Just Finding' : 'Bulmak Değil, Önlemek',
+      desc: language === 'en'
+        ? 'My goal is not to find bugs—it\'s to prevent them from reaching production. Through continuous monitoring and CI health-checks, I help teams detect anomalies early and build long-term stability.'
+        : 'Amacım bug bulmak değil—production\'a ulaşmalarını önlemek. Sürekli izleme ve CI sağlık kontrolleri ile ekiplerin anomalileri erken tespit etmesine ve uzun vadeli stabilite kurmasına yardımcı oluyorum.'
+    }
   ]
 
   if (isLoading) {
@@ -403,7 +433,7 @@ function AppContent() {
           </div>
           <div className="info-item">
             <span className="info-label">{language === 'en' ? 'Experience' : 'Deneyim'}</span>
-            <span className="info-value">9+ Years</span>
+            <span className="info-value">{experienceYears}+ {language === 'en' ? 'Years' : 'Yıl'}</span>
             <span className="info-sub">Quality Engineering</span>
           </div>
         </section>
@@ -411,24 +441,24 @@ function AppContent() {
         {/* Divider */}
         <div className="divider" />
 
-        {/* Approach */}
+        {/* How I Approach Quality */}
         <section className="section">
           <h2 className="section-title">
-            {language === 'en' ? 'Approach' : 'Yaklaşım'}
+            {language === 'en' ? 'How I Approach Quality' : 'Kaliteye Yaklaşımım'}
           </h2>
-          <div className="approach-content">
-            <p>
-              {language === 'en' 
-                ? "Quality is not a phase—it's a mindset. I design comprehensive testing strategies that integrate seamlessly into development workflows, ensuring defects are identified at the earliest possible stage."
-                : "Kalite bir aşama değil, bir zihniyettir. Geliştirme süreçlerine sorunsuz entegre olan kapsamlı test stratejileri tasarlıyorum ve hataların mümkün olan en erken aşamada tespit edilmesini sağlıyorum."
-              }
-            </p>
-            <p>
-              {language === 'en' 
-                ? "My expertise spans building robust automation architectures, implementing continuous testing pipelines, and cultivating quality-first engineering cultures."
-                : "Uzmanlık alanlarım; sağlam otomasyon mimarileri kurmak, sürekli test pipeline'ları uygulamak ve kalite odaklı mühendislik kültürleri oluşturmak."
-              }
-            </p>
+          <p className="approach-intro">
+            {language === 'en' 
+              ? "I treat quality as an engineering responsibility shared across the entire product lifecycle—not a phase owned by QA alone. My approach focuses on early risk detection, automation-driven confidence, and business-aligned decision making."
+              : "Kaliteyi sadece QA'in sahiplendiği bir aşama olarak değil, tüm ürün yaşam döngüsünde paylaşılan bir mühendislik sorumluluğu olarak görüyorum. Yaklaşımım erken risk tespiti, otomasyon odaklı güven ve iş hedeflerine uygun karar verme üzerine odaklanır."
+            }
+          </p>
+          <div className="quality-principles">
+            {qualityPrinciples.map((principle, idx) => (
+              <div key={idx} className="principle-card">
+                <h3 className="principle-title">{principle.title}</h3>
+                <p className="principle-desc">{principle.desc}</p>
+              </div>
+            ))}
           </div>
         </section>
 
@@ -493,12 +523,12 @@ function AppContent() {
           <h2 className="section-title">
             {language === 'en' ? 'Technologies & Tools' : 'Teknolojiler ve Araçlar'}
           </h2>
-          <div className="tags-list">
+          <div className="tools-grid">
             {technologies.map((tech) => (
-              <span key={tech.name} className="tag outline">
-                {tech.name}
-                {tech.level && <span className="tag-level">{tech.level}</span>}
-              </span>
+              <div key={tech.name} className="tool-item">
+                <span className="tool-name">{tech.name}</span>
+                <span className="tool-desc">{tech.desc}</span>
+              </div>
             ))}
           </div>
         </section>
