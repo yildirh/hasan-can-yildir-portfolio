@@ -555,32 +555,34 @@ a {
 /* Console Output - Fixed height to prevent layout shift */
 .pipeline-console {
   margin-top: 20px;
-  background: var(--bg-console);
+  background: transparent;
   border-radius: 10px;
   padding: 14px 18px;
-  min-height: 64px; /* Fixed min-height for consistency */
+  min-height: 56px; /* Fixed height - prevents layout shift */
   opacity: 0;
-  transition: opacity 0.3s ease;
-  border: 1px solid var(--border);
-  visibility: hidden;
+  transition: opacity 0.25s ease, background 0.25s ease, border-color 0.25s ease;
+  border: 1px solid transparent;
 }
 
 .pipeline-console.visible {
   opacity: 1;
-  visibility: visible;
+  background: var(--bg-console);
+  border-color: var(--border);
 }
 
 .console-line {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 12px;
   font-family: var(--font-mono);
   font-size: 13px;
+  width: 100%;
 }
 
 .console-prefix {
   font-weight: 600;
   flex-shrink: 0;
+  line-height: 1.5;
 }
 
 .console-content {
@@ -603,6 +605,8 @@ a {
   color: var(--text-muted);
   font-size: 12px;
   flex-shrink: 0;
+  margin-left: auto;
+  white-space: nowrap;
 }
 
 .console-line.error .console-prefix { color: var(--error); }
