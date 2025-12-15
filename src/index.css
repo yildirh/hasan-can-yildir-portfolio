@@ -814,7 +814,7 @@ a {
 }
 
 .experience-item.expanded .exp-details {
-  max-height: 400px;
+  max-height: 500px;
   padding-bottom: 24px;
   opacity: 1;
 }
@@ -1084,6 +1084,19 @@ a {
   .tools-grid {
     grid-template-columns: 1fr;
   }
+  
+  /* Mobile experience - allow scroll only when needed */
+  .experience-item.expanded .exp-details {
+    max-height: none;
+  }
+  
+  .exp-highlights {
+    gap: 10px;
+  }
+  
+  .highlight-item {
+    padding: 14px;
+  }
 }
 
 @media (max-width: 480px) {
@@ -1148,5 +1161,17 @@ a {
   
   .contact-link {
     text-align: center;
+  }
+  
+  .highlight-item {
+    padding: 12px;
+  }
+  
+  .highlight-title {
+    font-size: 12px;
+  }
+  
+  .highlight-desc {
+    font-size: 12px;
   }
 }
