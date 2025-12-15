@@ -195,8 +195,8 @@ function AppContent() {
   ]
 
   const technologies = [
-    { name: 'Cypress', level: 'Advanced' },
-    { name: 'Selenium', level: 'Advanced' },
+    { name: 'Cypress', level: null },
+    { name: 'Selenium', level: null },
     { name: 'Playwright', level: null },
     { name: 'TestCafe', level: null },
     { name: 'JavaScript', level: null },

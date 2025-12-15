@@ -81,7 +81,10 @@ a {
 /* Loader */
 .loader {
   position: fixed;
-  inset: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
   background: var(--bg);
   display: flex;
   align-items: center;
@@ -274,7 +277,10 @@ a {
 .divider::after {
   content: '';
   position: absolute;
-  inset: -4px 0;
+  top: -4px;
+  right: 0;
+  bottom: -4px;
+  left: 0;
   background: linear-gradient(90deg,
     transparent 0%,
     rgba(113, 113, 122, 0.05) 50%,
@@ -374,7 +380,10 @@ a {
 
 .track-bg {
   position: absolute;
-  inset: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
   background: var(--border);
   border-radius: 2px;
 }
@@ -531,17 +540,19 @@ a {
   margin-top: 20px;
   background: var(--bg-console);
   border-radius: 10px;
-  padding: 14px 18px;
-  min-height: 60px;
+  padding: 0;
+  max-height: 0;
+  overflow: hidden;
   opacity: 0;
-  transition: opacity 0.3s ease;
-  border: 1px solid var(--border);
-  visibility: hidden;
+  transition: all 0.3s ease;
+  border: 1px solid transparent;
 }
 
 .pipeline-console.visible {
+  padding: 14px 18px;
+  max-height: 100px;
   opacity: 1;
-  visibility: visible;
+  border-color: var(--border);
 }
 
 .console-line {
@@ -998,9 +1009,8 @@ a {
     font-size: 8px;
   }
   
-  .pipeline-console {
+  .pipeline-console.visible {
     padding: 10px 12px;
-    min-height: 50px;
   }
   
   .console-main {
