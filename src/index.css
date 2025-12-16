@@ -65,6 +65,11 @@
 
 html {
   scroll-behavior: smooth;
+  scrollbar-gutter: stable; /* Prevent layout shift when scrollbar appears */
+}
+
+body.no-scroll {
+  overflow: hidden;
 }
 
 body {
@@ -81,7 +86,7 @@ a {
   text-decoration: none;
 }
 
-/* Loader */
+/* Loader - Smooth intro with micro translate */
 .loader {
   position: fixed;
   top: 0;
@@ -95,12 +100,63 @@ a {
   z-index: 9999;
 }
 
+.loader-content {
+  text-align: center;
+  animation: intro 2.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes intro {
+  0% {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  18% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  62% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+}
+
 .loader-name {
   font-family: var(--font-serif);
   font-size: 28px;
   font-weight: 500;
-  color: var(--text-light);
+  color: var(--text);
+  letter-spacing: 0.02em;
 }
+
+/* Page content - smooth reveal after loader */
+.app {
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), 
+              transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.app.ready {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Sticky header only visible on scroll */
+.sticky-header {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.sticky-header.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+
 
 /* Sticky Header */
 .sticky-header {
@@ -1177,5 +1233,199 @@ a {
   
   .highlight-desc {
     font-size: 12px;
+  }
+}
+
+/* =============================================
+   404 PAGE
+   ============================================= */
+.not-found {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  background: var(--bg);
+}
+
+.not-found-content {
+  text-align: center;
+  max-width: 480px;
+}
+
+.not-found-code {
+  font-family: var(--font-mono);
+  font-size: 120px;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1;
+  margin-bottom: 16px;
+  opacity: 0.1;
+}
+
+.not-found-mascot {
+  width: 240px;
+  height: auto;
+  margin: 0 auto 32px;
+}
+
+.not-found-mascot img {
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0 0 30px rgba(59, 130, 246, 0.3));
+}
+
+.not-found-title {
+  font-family: var(--font-serif);
+  font-size: 32px;
+  font-weight: 500;
+  color: var(--text);
+  margin-bottom: 8px;
+}
+
+.not-found-subtitle {
+  font-size: 18px;
+  color: var(--text-muted);
+  margin-bottom: 32px;
+}
+
+.not-found-details {
+  margin-bottom: 32px;
+}
+
+.not-found-log {
+  display: block;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 16px 20px;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--text-muted);
+  text-align: left;
+  line-height: 2;
+}
+
+.log-prefix {
+  color: var(--text-secondary);
+}
+
+.log-success {
+  color: var(--success);
+}
+
+.log-info {
+  color: #60a5fa;
+}
+
+.not-found-btn {
+  display: inline-block;
+  padding: 14px 32px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--bg);
+  background: var(--text);
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+.not-found-btn:hover {
+  box-shadow: 0 0 20px rgba(250, 250, 250, 0.15);
+  transform: translateY(-2px);
+}
+
+/* =============================================
+   ABOUT PAGE
+   ============================================= */
+.about-page {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 80px 40px 100px;
+}
+
+.about-hero {
+  margin-bottom: 48px;
+}
+
+.about-title {
+  font-family: var(--font-serif);
+  font-size: 48px;
+  font-weight: 500;
+  color: var(--text);
+  margin-bottom: 12px;
+}
+
+.about-role {
+  font-size: 18px;
+  color: var(--text-muted);
+}
+
+.about-section {
+  margin-bottom: 8px;
+}
+
+.about-text {
+  font-size: 17px;
+  color: var(--text-secondary);
+  line-height: 1.8;
+  margin-bottom: 16px;
+}
+
+.about-text:last-child {
+  margin-bottom: 0;
+}
+
+/* Fun Facts Grid */
+.fun-facts-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.fun-fact-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 16px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+.fun-fact-item:hover {
+  border-color: var(--border-light);
+}
+
+.fun-fact-icon {
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+.fun-fact-text {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+  .about-page {
+    padding: 48px 20px 80px;
+  }
+  
+  .about-title {
+    font-size: 32px;
+  }
+  
+  .fun-facts-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .not-found-code {
+    font-size: 80px;
+  }
+  
+  .not-found-title {
+    font-size: 24px;
   }
 }

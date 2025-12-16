@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react'
-import { LanguageProvider, useLanguage } from './context/LanguageContext'
+import { useLanguage } from './context/LanguageContext'
 import { useTheme } from './context/ThemeContext'
 
 function AppContent() {
   const [isLoading, setIsLoading] = useState(true)
+  const [isReady, setIsReady] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const [step, setStep] = useState(0)
   const [status, setStatus] = useState('running')
@@ -26,8 +27,24 @@ function AppContent() {
   ]
 
   useEffect(() => {
-    const timer = setTimeout(() => setIsLoading(false), 1000)
-    return () => clearTimeout(timer)
+    // Lock scroll during loader
+    document.body.classList.add('no-scroll')
+    
+    // Loader animation duration
+    const timer = setTimeout(() => {
+      setIsLoading(false)
+      document.body.classList.remove('no-scroll')
+      
+      // Trigger page reveal on next frame for smooth transition
+      requestAnimationFrame(() => {
+        setIsReady(true)
+      })
+    }, 2200)
+    
+    return () => {
+      clearTimeout(timer)
+      document.body.classList.remove('no-scroll')
+    }
   }, [])
 
   useEffect(() => {
@@ -52,7 +69,8 @@ function AppContent() {
         return
       }
 
-      if (step === 1 && cycleIndex === 0) {
+      if (step === 1 && cycleIndex === 3) {
+        // Smoke fails on cycle 3
         setStatus('error')
         setMessage({ type: 'error', text: '2 failed · 8 passed · 0 skipped', subtext: 'Success rate: 80%' })
         setTimeout(() => {
@@ -64,7 +82,7 @@ function AppContent() {
         return
       }
 
-      if (step === 1 && status === 'running' && cycleIndex !== 0) {
+      if (step === 1 && status === 'running' && cycleIndex !== 3) {
         setMessage({ type: 'passed', text: 'Smoke Test: 10 tests passed', subtext: 'Success rate: 100%' })
         setTimeout(() => {
           setMessage({ type: '', text: '', subtext: '' })
@@ -74,6 +92,7 @@ function AppContent() {
       }
 
       if (step === 2 && cycleIndex === 1) {
+        // Regression fails on cycle 1
         setStatus('error')
         setMessage({ type: 'error', text: '5 failed · 45 passed · 0 skipped', subtext: 'Success rate: 90%' })
         setTimeout(() => {
@@ -242,7 +261,9 @@ function AppContent() {
   if (isLoading) {
     return (
       <div className="loader">
-        <div className="loader-name">Hasan Can YILDIR</div>
+        <div className="loader-content">
+          <div className="loader-name">Hasan Can YILDIR</div>
+        </div>
       </div>
     )
   }
@@ -274,7 +295,7 @@ function AppContent() {
         </div>
       </div>
 
-      <div className="app">
+      <div className={`app ${isReady ? 'ready' : ''}`}>
         {/* Header */}
         <header className="header">
           <a href="#" className="header-logo">Hasan Can YILDIR</a>
@@ -571,12 +592,6 @@ function AppContent() {
   )
 }
 
-function App() {
-  return (
-    <LanguageProvider>
-      <AppContent />
-    </LanguageProvider>
-  )
+export default function App() {
+  return <AppContent />
 }
-
-export default App
