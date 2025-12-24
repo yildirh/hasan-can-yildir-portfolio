@@ -569,7 +569,13 @@ function AppContent() {
             }
           </p>
           <div className="contact-links">
-            <a href="mailto:yldrhsncn@gmail.com" className="contact-link primary">
+            <a 
+              href="/schedule"
+              className="contact-link primary"
+            >
+              {language === 'en' ? 'Book a Call' : 'Görüşme Ayarla'}
+            </a>
+            <a href="mailto:yldrhsncn@gmail.com" className="contact-link">
               yldrhsncn@gmail.com
             </a>
             <a 

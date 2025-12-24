@@ -100,7 +100,62 @@ const translations = {
       or: 'Or directly',
       sendEmail: 'Send Email'
     },
-    footer: '© 2024 Hasan Can YILDIR. All rights reserved.'
+    footer: '© 2024 Hasan Can YILDIR. All rights reserved.',
+    schedule: {
+      title: 'Book a Call',
+      subtitle: 'Schedule an Appointment',
+      selectTime: 'Select a Time',
+      portfolio: 'Portfolio',
+      noSlots: 'No available slots',
+      selectDay: 'Select a day to see available times',
+      available: 'Available',
+      booked: 'Booked',
+      pending: 'Pending',
+      footer: 'Crafted in Istanbul',
+      modal: {
+        title: 'Request Appointment',
+        name: 'Full Name',
+        namePlaceholder: 'Enter your full name',
+        phone: 'Phone Number',
+        phonePlaceholder: '+90 5XX XXX XX XX',
+        note: 'Note (Optional)',
+        notePlaceholder: 'Any additional information...',
+        submit: 'Send Request',
+        submitting: 'Sending...',
+        success: 'Request Sent!',
+        successMessage: 'We will contact you to confirm your appointment.'
+      },
+      calendar: {
+        months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+        days: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+        today: 'Today'
+      },
+      admin: {
+        title: 'Admin Panel',
+        logout: 'Logout',
+        pending: 'Pending',
+        today: 'Today',
+        upcoming: 'Upcoming',
+        cancelled: 'Cancelled',
+        tabs: {
+          requests: 'Pending Requests',
+          calendar: 'Calendar & Slots',
+          appointments: 'Appointments',
+          settings: 'Settings'
+        },
+        noRequests: 'No pending requests',
+        todayAppointments: "Today's Appointments",
+        noAppointmentsToday: 'No appointments today',
+        approve: 'Approve',
+        reject: 'Reject',
+        settings: {
+          title: 'Slot Settings',
+          duration: 'Slot Duration',
+          minutes: 'minutes',
+          save: 'Save Settings'
+        }
+      }
+    }
   },
   tr: {
     nav: {
@@ -201,7 +256,62 @@ const translations = {
       or: 'Veya direkt olarak',
       sendEmail: 'Mail Gönder'
     },
-    footer: '© 2024 Hasan Can YILDIR. Tüm hakları saklıdır.'
+    footer: '© 2024 Hasan Can YILDIR. Tüm hakları saklıdır.',
+    schedule: {
+      title: 'Randevu Al',
+      subtitle: 'Görüşme Planla',
+      selectTime: 'Saat Seçin',
+      portfolio: 'Portfolio',
+      noSlots: 'Müsait slot yok',
+      selectDay: 'Müsait saatleri görmek için gün seçin',
+      available: 'Müsait',
+      booked: 'Dolu',
+      pending: 'Beklemede',
+      footer: "İstanbul'da Yapıldı",
+      modal: {
+        title: 'Randevu Talebi',
+        name: 'Ad Soyad',
+        namePlaceholder: 'Adınızı ve soyadınızı girin',
+        phone: 'Telefon Numarası',
+        phonePlaceholder: '+90 5XX XXX XX XX',
+        note: 'Not (İsteğe bağlı)',
+        notePlaceholder: 'Eklemek istediğiniz bilgiler...',
+        submit: 'Talep Gönder',
+        submitting: 'Gönderiliyor...',
+        success: 'Talep Gönderildi!',
+        successMessage: 'Randevunuzu onaylamak için sizinle iletişime geçeceğiz.'
+      },
+      calendar: {
+        months: ['Ocak', 'Şubat', 'Mart', 'Nisan', 'Mayıs', 'Haziran', 'Temmuz', 'Ağustos', 'Eylül', 'Ekim', 'Kasım', 'Aralık'],
+        days: ['Paz', 'Pzt', 'Sal', 'Çar', 'Per', 'Cum', 'Cmt'],
+        today: 'Bugün'
+      },
+      admin: {
+        title: 'Admin Paneli',
+        logout: 'Çıkış',
+        pending: 'Bekleyen',
+        today: 'Bugün',
+        upcoming: 'Yaklaşan',
+        cancelled: 'İptal',
+        tabs: {
+          requests: 'Bekleyen Talepler',
+          calendar: 'Takvim & Slotlar',
+          appointments: 'Randevular',
+          settings: 'Ayarlar'
+        },
+        noRequests: 'Bekleyen talep yok',
+        todayAppointments: 'Bugünkü Randevular',
+        noAppointmentsToday: 'Bugün randevu yok',
+        approve: 'Onayla',
+        reject: 'Reddet',
+        settings: {
+          title: 'Slot Ayarları',
+          duration: 'Slot Süresi',
+          minutes: 'dakika',
+          save: 'Ayarları Kaydet'
+        }
+      }
+    }
   }
 }
 
