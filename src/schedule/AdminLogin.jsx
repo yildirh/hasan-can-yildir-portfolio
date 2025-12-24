@@ -81,7 +81,7 @@ export default function AdminLogin({ onLogin }) {
           </button>
         </form>
 
-        <p className="admin-login-note">Authorized personnel only</p>
+        <p className="admin-login-note">Sadece yetkili personel</p>
       </div>
     </div>
   );
