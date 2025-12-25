@@ -3895,3 +3895,216 @@ a {
   border-radius: 6px;
   margin-left: 8px;
 }
+
+/* Working Hours Settings */
+.working-hours-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.time-select-group {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.time-label {
+  font-size: 12px;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.time-select-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.time-select-wrapper::after {
+  content: '';
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 6px solid #6b7280;
+  pointer-events: none;
+}
+
+.time-select {
+  width: 100%;
+  padding: 12px 40px 12px 16px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 2px solid var(--border);
+  color: var(--text);
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.time-select:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.time-select:focus {
+  outline: none;
+  border-color: #10b981;
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+}
+
+.time-separator {
+  color: var(--text-muted);
+  font-size: 18px;
+  margin-top: 20px;
+}
+
+/* Preview Info Grid */
+.preview-info {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.preview-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.preview-item:last-child {
+  border-bottom: none;
+}
+
+.preview-item.highlight {
+  background: rgba(16, 185, 129, 0.08);
+  border-radius: 8px;
+  padding: 10px 12px;
+  margin-top: 4px;
+  border-bottom: none;
+}
+
+.preview-item.highlight .preview-value {
+  color: #10b981;
+  font-weight: 700;
+}
+
+.preview-label {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.preview-value {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+/* Light Theme Adjustments for Settings */
+[data-theme="light"] .time-select-wrapper::after {
+  border-top-color: #374151;
+}
+
+[data-theme="light"] .time-select {
+  background: #ffffff;
+  border-color: rgba(0, 0, 0, 0.15);
+  color: #1a1a1a;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+[data-theme="light"] .time-select:hover {
+  background-color: #fafafa;
+  border-color: rgba(0, 0, 0, 0.25);
+}
+
+[data-theme="light"] .time-select:focus {
+  border-color: #10b981;
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.15);
+}
+
+[data-theme="light"] .time-label {
+  color: #6b7280;
+}
+
+[data-theme="light"] .time-separator {
+  color: #9ca3af;
+}
+
+[data-theme="light"] .preview-item {
+  border-bottom-color: rgba(0, 0, 0, 0.08);
+}
+
+[data-theme="light"] .preview-item.highlight {
+  background: rgba(16, 185, 129, 0.12);
+}
+
+[data-theme="light"] .preview-label {
+  color: #6b7280;
+}
+
+[data-theme="light"] .preview-value {
+  color: #1a1a1a;
+}
+
+[data-theme="light"] .duration-btn {
+  background: #ffffff;
+  border-color: rgba(0, 0, 0, 0.15);
+  color: #374151;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+[data-theme="light"] .duration-btn:hover {
+  background: #fafafa;
+  border-color: rgba(0, 0, 0, 0.25);
+}
+
+[data-theme="light"] .duration-btn.active {
+  background: rgba(16, 185, 129, 0.08);
+  border-color: #10b981;
+  color: #059669;
+}
+
+[data-theme="light"] .settings-preview {
+  background: #f9fafb;
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+[data-theme="light"] .settings-preview h4 {
+  color: #6b7280;
+}
+
+[data-theme="light"] .settings-hint {
+  color: #6b7280;
+}
+
+[data-theme="light"] .settings-group label {
+  color: #1a1a1a;
+}
+
+/* Mobile Responsive */
+@media (max-width: 480px) {
+  .working-hours-row {
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  .time-separator {
+    display: none;
+  }
+  
+  .time-select-group {
+    width: 100%;
+  }
+}
