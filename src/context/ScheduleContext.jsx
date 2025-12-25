@@ -19,9 +19,7 @@ const COLLECTIONS = {
   SETTINGS: 'settings',
 };
 
-const generateWorkingHours = (slotDuration) => {
-  const startHour = 10;
-  const endHour = 21;
+const generateWorkingHours = (slotDuration, startHour = 10, endHour = 18) => {
   const slots = [];
   
   if (slotDuration === 30) {
@@ -54,8 +52,10 @@ export function ScheduleProvider({ children }) {
   const [cancelledAppointments, setCancelledAppointments] = useState([]);
   const [loading, setLoading] = useState(true);
   const [slotDuration, setSlotDurationState] = useState(60);
+  const [startHour, setStartHourState] = useState(10);
+  const [endHour, setEndHourState] = useState(18);
   
-  const workingHours = useMemo(() => generateWorkingHours(slotDuration), [slotDuration]);
+  const workingHours = useMemo(() => generateWorkingHours(slotDuration, startHour, endHour), [slotDuration, startHour, endHour]);
 
   const formatDateKey = (date) => {
     const year = date.getFullYear();
@@ -72,6 +72,12 @@ export function ScheduleProvider({ children }) {
           const data = snapshot.data();
           if (data.slotDuration) {
             setSlotDurationState(data.slotDuration);
+          }
+          if (data.startHour !== undefined) {
+            setStartHourState(data.startHour);
+          }
+          if (data.endHour !== undefined) {
+            setEndHourState(data.endHour);
           }
         }
       }
@@ -300,6 +306,28 @@ export function ScheduleProvider({ children }) {
     }
   }, []);
 
+  const setWorkingHoursRange = useCallback(async (newStartHour, newEndHour) => {
+    try {
+      const settingsRef = doc(db, COLLECTIONS.SETTINGS, 'app');
+      await setDoc(settingsRef, { startHour: newStartHour, endHour: newEndHour }, { merge: true });
+    } catch (error) {
+      console.error('Working hours update error:', error);
+    }
+  }, []);
+
+  const updateAllSettings = useCallback(async (duration, newStartHour, newEndHour) => {
+    try {
+      const settingsRef = doc(db, COLLECTIONS.SETTINGS, 'app');
+      await setDoc(settingsRef, { 
+        slotDuration: duration, 
+        startHour: newStartHour, 
+        endHour: newEndHour 
+      }, { merge: true });
+    } catch (error) {
+      console.error('Settings update error:', error);
+    }
+  }, []);
+
   const value = {
     slots,
     requests,
@@ -308,6 +336,10 @@ export function ScheduleProvider({ children }) {
     workingHours,
     slotDuration,
     setSlotDuration,
+    startHour,
+    endHour,
+    setWorkingHoursRange,
+    updateAllSettings,
     loading,
     getSlotsForDay,
     createRequest,
